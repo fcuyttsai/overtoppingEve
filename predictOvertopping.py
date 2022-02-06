@@ -6,8 +6,9 @@ import tensorflow.compat.v1 as tf  #for tensorflow 2.0
 tf.disable_v2_behavior()
 tf.get_logger().setLevel(logging.ERROR)
 # print( tf.__version__)
-qmax=-0.0788.  #1.Scale of q
-qmin=-7.397.   #2.Scale of q
+#Scaling of q
+qmax=-0.0788.
+qmin=-7.397.
 
 trained_model='overtoppingEve/'
 def Predicted_overtopping(data):
