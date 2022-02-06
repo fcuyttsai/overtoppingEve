@@ -11,5 +11,4 @@ https://github.com/fcuyttsai/overtoppingEve.git
 We also make an execute file with google colab:
 https://colab.research.google.com/drive/1EBYPPFnfALCo1Y-mbCy94pqJAPMvGc-1#scrollTo=5IBNQSVVoq-M
 
-Acknowledgments：
 The authors would like to thank Prof. Barbara Zanuttigh for providing the latest CLASH data 2016.
