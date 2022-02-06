@@ -7,8 +7,8 @@ tf.disable_v2_behavior()
 tf.get_logger().setLevel(logging.ERROR)
 # print( tf.__version__)
 #Scaling of q
-qmax=-0.0788.
-qmin=-7.397.
+qmax=-0.0788
+qmin=-7.397
 
 trained_model='overtoppingEve/'
 def Predicted_overtopping(data):
