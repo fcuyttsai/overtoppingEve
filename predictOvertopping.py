@@ -6,16 +6,18 @@ import tensorflow.compat.v1 as tf  #for tensorflow 2.0
 tf.disable_v2_behavior()
 tf.get_logger().setLevel(logging.ERROR)
 # print( tf.__version__)
-qmax=-0.0788
-qmin=-7.397
+qmax=-0.0788.  #1.Scale of q
+qmin=-7.397.   #2.Scale of q
 
 trained_model='overtoppingEve/'
 def Predicted_overtopping(data):
   with tf.Session(graph=tf.Graph(),config=tf.ConfigProto(gpu_options=tf.GPUOptions(allow_growth=True),
                       allow_soft_placement=True, log_device_placement=False)) as sess:
       
+      #Load pre-trained model as the .pb model trained from Tensorflow
       tf.saved_model.loader.load(sess, [tf.saved_model.tag_constants.SERVING], trained_model)
       
+      #Scale normalized with wave height and structure scale factor
       Hm0Toe=data['Hm0Toe']
       data['ht']=data['ht']/data['Hm0Toe']
       data['Bt']=data['Bt']/data['lm0t']
@@ -29,30 +31,26 @@ def Predicted_overtopping(data):
       data['Hm0Toe']=data['Hm0Toe']/data['lm0t']
       data['h']=data['h']/data['lm0t']
       inputvalues = [list(data.values())[:-1]]
-      print(inputvalues)
+      #print("input parameter with normalized scale:",inputvalues)
       inputvalues=np.reshape(inputvalues, (1, 16, 1))
       true_value=np.transpose([[0]])
-      # print("Input_shape:",np.shape(data))
-      # print("Inputs:", data)
-      # print("Output_shape:",np.shape(true_value))
+      #load input parameter to pre-trained model
       save_tfrecords(inputvalues, true_value , 'test',  'test0.tfrecord')
 
-      # H1 = tf.get_default_graph().get_tensor_by_name("Inputdata_:0")
+      #The pretrained-model setup
       Input = tf.get_default_graph().get_tensor_by_name("InputDatabase:0")
       keep_ =tf.get_default_graph().get_tensor_by_name("keep:0")
       dataset_init_op = tf.get_default_graph().get_operation_by_name('dataset_init')
       rnd=tf.get_default_graph().get_tensor_by_name("rndvalue:0")
-      # output = sess.run(H1, feed_dict = {Input:parameters.test_file,H1: data, keep_:np.float32(1.0)})
-      # print("output:",output)
       H2 = tf.get_default_graph().get_tensor_by_name("Outputdata_:0")
       
+      #Execute to predict wave overtopping value
       sess.run(dataset_init_op,feed_dict = {Input:'test0.tfrecord',rnd:1})
       predicted = sess.run(H2, feed_dict = { keep_:1.0})
 
-      # print(predicted)
-      
+      #Scale inverse
       qx=predicted*(qmax-qmin)+qmin
       q=(math.pow(10,qx)*math.sqrt(9.8*(math.pow(Hm0Toe,3))))
-      print("q:",q)
+      print("Wave overtopping q:",q)
       
 print("Model Loaded! ")
