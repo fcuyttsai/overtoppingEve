@@ -11,6 +11,8 @@ qmax=-0.0788
 qmin=-7.397
 
 trained_model='overtoppingEve/'
+
+#Figure plot
 def plot1D(x,y,name):
   """Create a pyplot plot and save to buffer."""
   import matplotlib.pyplot as plt
@@ -31,7 +33,6 @@ def Predicted_overtopping(data,k=0,kname=""):
       tf.saved_model.loader.load(sess, [tf.saved_model.tag_constants.SERVING], trained_model)
       
       #Scale normalized with wave height and structure scale factor
-
       if(isinstance(data,dict)):
         Hm0Toe=data['Hm0Toe']
         data['ht']=data['ht']/data['Hm0Toe']
@@ -74,7 +75,6 @@ def Predicted_overtopping(data,k=0,kname=""):
       if(isinstance(data,dict)):
         qx=predicted*(qmax-qmin)+qmin
         q=(math.pow(10,qx)*math.sqrt(9.8*(math.pow(Hm0Toe,3))))
-        print('dict')
       else:
         Hm0Toe= np.array(data)[:,1]
         q=[]
@@ -83,8 +83,5 @@ def Predicted_overtopping(data,k=0,kname=""):
           q.append(math.pow(10,qx)*math.sqrt(9.8*(math.pow(Hm0Toe[n],3))))
         plot1D(np.array(data)[:,k],q,kname)
       print("Wave overtopping q:",q)
-      
-print("Model Loaded successful! ")
-
       
 print("Model Loaded successful! ")
