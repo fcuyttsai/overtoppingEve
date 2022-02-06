@@ -53,8 +53,6 @@ def Predicted_overtopping(data,k=0,kname=""):
         inputvalues=np.expand_dims(data, 2)
         leng=len(inputvalues)
         true_value=np.zeros([leng,1])
-        print(np.shape(inputvalues))
-        print(np.shape(leng))
       #print("input parameter with normalized scale:",inputvalues)
       
       #load input parameter to pre-trained model
