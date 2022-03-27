@@ -57,6 +57,6 @@ def Predicted_overtopping(data,k=0,kname=""):
         qx=predicted*(qmax-qmin)+qmin
         q=(math.pow(10,qx)*math.sqrt(9.8*(math.pow(Hm0Toe,3))))
      
-      print("Wave overtopping q [m$^3$/s/m]:",q)
+      print("Wave overtopping q [m^3/s/m]:",q)
       
 print("Model Loaded successful! ")
