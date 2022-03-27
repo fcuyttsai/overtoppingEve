@@ -12,19 +12,6 @@ qmin=-7.397
 
 trained_model='overtoppingEve/'
 
-#Figure plot
-def plot1D(x,y,name):
-  """Create a pyplot plot and save to buffer."""
-  import matplotlib.pyplot as plt
-  figure = plt.figure(figsize=(10,5))
-  x=np.hstack(x)
-  plt.plot(x,y,'-o')
-  csfont = {'fontname':'Times','size'   : 14}
-  plt.xlabel(name)
-  plt.ylabel('q measured [m^3/s/m]', **csfont)
-  plt.grid(True)
-  plt.show()
-
 def Predicted_overtopping(data,k=0,kname=""):
   with tf.Session(graph=tf.Graph(),config=tf.ConfigProto(gpu_options=tf.GPUOptions(allow_growth=True),
                       allow_soft_placement=True, log_device_placement=False)) as sess:
@@ -49,10 +36,6 @@ def Predicted_overtopping(data,k=0,kname=""):
         inputvalues = [list(data.values())[:-1]]
         inputvalues=np.reshape(inputvalues, (1, 16, 1))
         true_value=np.transpose([[0]])
-      else:
-        inputvalues=np.expand_dims(data, 2)
-        leng=len(inputvalues)
-        true_value=np.zeros([leng,1])
       #print("input parameter with normalized scale:",inputvalues)
       
       #load input parameter to pre-trained model
@@ -73,13 +56,7 @@ def Predicted_overtopping(data,k=0,kname=""):
       if(isinstance(data,dict)):
         qx=predicted*(qmax-qmin)+qmin
         q=(math.pow(10,qx)*math.sqrt(9.8*(math.pow(Hm0Toe,3))))
-      else:
-        Hm0Toe= np.array(data)[:,1]
-        q=[]
-        for n in range(len(Hm0Toe)):
-          qx=predicted[n]*(qmax-qmin)+qmin
-          q.append(math.pow(10,qx)*math.sqrt(9.8*(math.pow(Hm0Toe[n],3))))
-        plot1D(np.array(data)[:,k],q,kname)
-      print("Wave overtopping q:",q)
+     
+      print("Wave overtopping q [m$^3$/s/m]:",q)
       
 print("Model Loaded successful! ")
