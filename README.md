@@ -8,7 +8,7 @@ This specific pre-trained convolutional neural network(CNN) allows you to input 
 If you are interesting the pre-trained model and execution code, please following the link:
 https://github.com/fcuyttsai/overtoppingEve.git
 
-Pre-trained Models (Core Ver.)
+Pre-trained Models and test data(Core Ver.)
 https://drive.google.com/drive/folders/1e-RqjPUX4tZau8qtfjtgasxYTUttqC47?usp=sharing
 
 We also make an execute file with google colab:
