@@ -41,7 +41,7 @@ def Predicted_overtopping_changedvalue_bootstrap(trained_model,data,Hm0Toe):
 				inputvalues=np.expand_dims(data, 2)
 				leng=len(inputvalues)
 				true_value=np.zeros([leng,1])
-				print("input parameter already with normalized scale")
+				print("input parameter already with normalized scale, running...")
 				# print(np.shape(inputvalues))
 				# print(np.shape(leng))
 			#print("input parameter with normalized scale:",inputvalues)
