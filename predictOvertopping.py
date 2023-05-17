@@ -19,7 +19,6 @@ def Predicted_overtopping_changedvalue_bootstrap(trained_model,data,Hm0Toe):
 			tf.saved_model.loader.load(sess, [tf.saved_model.tag_constants.SERVING], trained_model)
 			
 			#Scale normalized with wave height and structure scale factor
-
 			if(isinstance(data,dict)):
 				Hm0Toe=data['Hm0Toe']
 				data['ht']=data['ht']/data['Hm0Toe']
@@ -36,15 +35,12 @@ def Predicted_overtopping_changedvalue_bootstrap(trained_model,data,Hm0Toe):
 				inputvalues = [list(data.values())[:-1]]
 				inputvalues=np.reshape(inputvalues, (1, 16, 1))
 				true_value=np.transpose([[0]])
-				print("input parameter is dict.")
+				# print("input parameter is dict.")
 			else:
 				inputvalues=np.expand_dims(data, 2)
 				leng=len(inputvalues)
 				true_value=np.zeros([leng,1])
-				print("input parameter already with normalized scale, running...")
-				# print(np.shape(inputvalues))
-				# print(np.shape(leng))
-			#print("input parameter with normalized scale:",inputvalues)
+				# print("input parameter already with normalized scale, running...")
 			
 			#load input parameter to pre-trained model
 			save_tfrecords(inputvalues, true_value , 'test',  'test0.tfrecord')
@@ -76,11 +72,8 @@ def Predicted_overtopping_changedvalue_bootstrap(trained_model,data,Hm0Toe):
 			else:
 				
 				q=[]
-				# print('length:',len(predicted))
 				for n in range(len(Hm0Toe)):
-					# print('index',n,'predicted _q',predicted[n])
 					qx=predicted[n]*(qmax-qmin)+qmin
-					
 					q.append(math.pow(10,qx)*math.sqrt(9.8*(math.pow(Hm0Toe[n],3))))
 
 			return q
