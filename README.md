@@ -1,5 +1,5 @@
 #Wave overtopping predictor
-### Deep Convolution neural network for predicting wave overtopping at coastal structures
+### A Novel CNN Model for Predicting Wave Overtopping at Coastal Structures
 
 Y.T Tsai and C.P Tsai, email:yuttsai@fcu.edu.tw
 
