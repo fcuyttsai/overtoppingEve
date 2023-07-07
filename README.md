@@ -9,7 +9,8 @@ If you are interesting the pre-trained model and execution code, please followin
 https://github.com/fcuyttsai/overtoppingEve.git
 
 Pre-trained Models and test data(Core Ver.)
-https://drive.google.com/drive/folders/1e-RqjPUX4tZau8qtfjtgasxYTUttqC47?usp=sharing
+https://drive.google.com/drive/folders/1-AiyJWrYyBvUH26_NdlgfRPoiIv0cxaA (optimized)
+https://drive.google.com/drive/folders/1e-RqjPUX4tZau8qtfjtgasxYTUttqC47?usp=sharing (past model)
 
 We also make an execute file with google colab:
 https://colab.research.google.com/drive/1EBYPPFnfALCo1Y-mbCy94pqJAPMvGc-1#scrollTo=5IBNQSVVoq-M
