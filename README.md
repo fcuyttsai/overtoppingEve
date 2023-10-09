@@ -1,7 +1,7 @@
 #Wave overtopping predictor
 ### Predictions of Wave Overtopping Using Deep Learning Neural Networks
 
-Y.T Tsai and C.P Tsai, email:yuttsai@fcu.edu.tw
+Y.T Tsai and C.P Tsai
 
 This specific pre-trained convolutional neural network(CNN) allows you to input the geometric and hydraulic parameters for accurate wave overtopping predictions.
 
