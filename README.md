@@ -1,5 +1,5 @@
 #Wave overtopping predictor
-### A Novel CNN Model for Predicting Wave Overtopping at Coastal Structures
+### Predictions of Wave Overtopping Using Deep Learning Neural Networks
 
 Y.T Tsai and C.P Tsai, email:yuttsai@fcu.edu.tw
 
@@ -15,4 +15,4 @@ https://drive.google.com/drive/folders/1e-RqjPUX4tZau8qtfjtgasxYTUttqC47?usp=sha
 We also make an execute file with google colab:
 https://colab.research.google.com/drive/1EBYPPFnfALCo1Y-mbCy94pqJAPMvGc-1#scrollTo=5IBNQSVVoq-M
 
-The authors would like to thank Prof. Barbara Zanuttigh for providing the CLASH data 2016.
+The authors would like to thank Prof. Barbara Zanuttigh for providing the EurOtop database.
